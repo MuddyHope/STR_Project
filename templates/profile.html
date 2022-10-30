@@ -1,0 +1,26 @@
+{% load static %}
+<h1>List:</h1>
+<br>
+
+{% for todo in todolist %}
+        {{todo.title}} >>>> [{{todo.num1}}, {{todo.num2}}, {{todo.num3}}]
+<br>
+{% endfor %}
+
+<h2>Create or Update</h2>
+
+<form action="/upload" method="POST" >
+    {% csrf_token %}
+    <input type="text" name="title" placeholder="title">
+    <input type="number" name="num1" placeholder="Impact">
+    <input type="number" name="num2" placeholder="Ease">
+    <input type="number" name="num3" placeholder="Confidence">
+    <button type="submit">Submit</button>
+</form>
+
+<h2>Delete</h2>
+<form action="/delete" method="POST">
+    {% csrf_token %}
+    <input type="text" name="title" placeholder = "title">
+    <button type="submit">Delete</button>
+</form>
